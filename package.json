@@ -5,7 +5,7 @@
     "discord.js": "^14.7.1",
     "luxon": "^3.4.4",
     "mongoose": "^8.0.1",
-    "nodemon": "^3.0.2",
+    "nodemon": "^3.1.0",
     "quick.db": "^9.1.7",
     "request": "^2.88.2"
   },

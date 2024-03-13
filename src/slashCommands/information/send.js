@@ -1,20 +1,9 @@
 let {
-	GatewayIntentBits,
 	Client,
-	Collection,
-	InteractionType,
-	ModalBuilder,
-	StringSelectMenuBuilder,
-	TextInputBuilder,
 	ButtonStyle,
 	ActionRowBuilder,
 	EmbedBuilder,
-	TextInputStyle,
-	ButtonBuilder,
-	ChannelType,
-	PermissionsBitField,
-	MessageCollector,
-	Message
+	ButtonBuilder
 } = require('discord.js');
 let shop = require('../../Schema/shop.js');
 let Price = require('../../Schema/price.js');
@@ -73,10 +62,6 @@ module.exports = {
 			const format = `<t:${Math.floor(polas.getTime() / 1000)}:R>`;
 			const embed = new EmbedBuilder()
 				.setTitle(`PRODUCT LIST\nLast Update: ${format}`)
-				/*.setAuthor({
-                  name: `TICKET`,
-                  iconURL: client.user.avatarDisplayURL({ dynamic: true }),
-                })*/
 				.setDescription(`${text}`)
 				.setTimestamp()
 
@@ -86,46 +71,29 @@ module.exports = {
 					iconURL: client.user.displayAvatarURL({dynamic: true})
 				});
 
-			const row1 = new ActionRowBuilder().addComponents(
-				new ButtonBuilder().setStyle(2).setCustomId('support').setEmoji('🎫')
-			);
 			const row = new ActionRowBuilder().addComponents(
-				new StringSelectMenuBuilder()
-					.setCustomId('support')
-					.setPlaceholder('Make a selection 📜')
-					.addOptions([
-						{
-							label: 'Buy',
-							description: 'Buy Items Of Products',
-							emoji: '<:duit:1170172864465473588>',
-							value: 'Howmanys'
-						},
-						{
-							label: 'GrowID',
-							description: 'Add Your GrowID Into Database',
-							emoji: '<:Bot:1170169208273903677>',
-							value: 'setGrowID'
-						},
-						{
-							label: 'Deposit',
-							description: 'Check Deposit World',
-							emoji: '<a:world:1174338186189733899>',
-							value: 'deposit'
-						},
-						{
-							label: 'Balance',
-							description: 'Balance Info',
-							emoji: '<a:dollarfire:1174338459113103451>',
-							value: 'balance1'
-						},
-						{
-							label: 'Stock',
-							description: 'Stock Info',
-							emoji: '<:history:1156560248023285881>',
-							value: 'stock'
-						}
-					])
+				new ButtonBuilder()
+					.setLabel('Buy')
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji('<:duit:1170172864465473588>')
+					.setCustomId('Howmanys'),
+				new ButtonBuilder()
+					.setLabel('Set GrowID')
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji('<:Bot:1170169208273903677>')
+					.setCustomId('growid23'),
+				new ButtonBuilder()
+					.setLabel('Balance')
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji('<a:dollarfire:1174338459113103451>')
+					.setCustomId('balance1'),
+				new ButtonBuilder()
+					.setLabel('Deposit')
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji('<a:world:1174338186189733899>')
+					.setCustomId('deposit')
 			);
+
 			Yayay.edit({embeds: [embed], components: [row]});
 		}, 11000);
 	}

@@ -1,9 +1,9 @@
-const { Schema, model } = require("mongoose")
+const {Schema, model} = require('mongoose');
 
 const schema = new Schema({
-    mt: Boolean
-})
+	Maintenance: Boolean
+});
 
-const mt = model("mt", schema)
+const mt = model('mt', schema);
 
-module.exports = mt
+module.exports = mt;
